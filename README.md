@@ -1,1 +1,1 @@
-# telebot_in_team
+# Divide and rule
