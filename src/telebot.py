@@ -74,15 +74,16 @@ async def process_picture_command(message: types.Message):
     if user_id not in chat_rooms:
         await message.reply(NO_COMPANION)
         return
-    #
-    # if message.text.count(" ") != 2:
-    #     await message.reply(INCORRECT_COMMAND_PICTURE)
-    #     return
-    link = message.get_args().split()[0]
-    text = ' '.join(message.get_args().split()[1:])
-    picture = make_picture(link, text)
-    if not picture:
-        await message.reply(INCORRECT_PICTURE)
+
+    args = message.get_args().split()
+    if len(args) < 2:
+        await message.reply(INCORRECT_COMMAND_PICTURE)
+        return
+    link = args[0]
+    text = ' '.join(args[1:])
+    picture, result = make_picture(link, text)
+    if picture is None:
+        await message.reply(result)
     else:
         await message.reply(PICTURE_DONE)
         await bot.send_photo(chat_id=chat_rooms[message.from_user.id], photo=picture)

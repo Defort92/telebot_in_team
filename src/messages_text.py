@@ -22,3 +22,4 @@ INCORRECT_COMMAND_PICTURE = """Неправильное использовани
 """
 INCORRECT_PICTURE = "Не удалось создать картинку"
 PICTURE_DONE = "Картинка доставлена"
+INCORRECT_LINK = "Некорректная ссылка"
